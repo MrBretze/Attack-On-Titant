@@ -9,25 +9,16 @@ class Logger {
 
         val debug: Boolean = false
 
-        fun debug(obj: Object) {
+        fun debug(obj: Any) {
             if (debug)
                 Bukkit.getConsoleSender().sendMessage(ChatColor.DARK_RED.toString() + "[DEBUG AOT]" + ChatColor.RESET.toString() + toString(obj))
         }
 
-        fun debug(obj: String) {
-            if (debug)
-                Bukkit.getConsoleSender().sendMessage(ChatColor.DARK_RED.toString() + "[DEBUG AOT]" + ChatColor.RESET.toString() + obj)
-        }
-
-        fun info(obj: Object) {
+        fun info(obj: Any) {
             Bukkit.getConsoleSender().sendMessage(ChatColor.GREEN.toString() + "[INFO AOT]" + ChatColor.RESET.toString() + toString(obj))
         }
 
-        fun info(obj: String) {
-            Bukkit.getConsoleSender().sendMessage(ChatColor.GREEN.toString() + "[INFO AOT]" + ChatColor.RESET.toString() + obj)
-        }
-
-        private fun toString(obj: Object): String {
+        private fun toString(obj: Any): String {
             return obj.toString()
         }
 

@@ -1,18 +1,15 @@
 package fr.bretzel.aot
 
-import org.bukkit.configuration.file.FileConfiguration
-import org.bukkit.configuration.file.YamlConfiguration
+import fr.bretzel.aot.config.Config
 import org.bukkit.plugin.java.JavaPlugin
 import java.io.File
 
 class AOT: JavaPlugin() {
 
-
-
     companion object {
 
         @JvmField var INSTANCE: AOT? = null
-        @JvmField var CONFIG: FileConfiguration? = null
+        @JvmField var CONFIG: Config? = null
 
     }
 
@@ -35,11 +32,11 @@ class AOT: JavaPlugin() {
             f.createNewFile()
         }
 
-        CONFIG = YamlConfiguration.loadConfiguration(f)
+        CONFIG = Config(f)
 
     }
 
     override fun onDisable() {
-
+        CONFIG!!.saveConfig()
     }
 }
