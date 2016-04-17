@@ -1,6 +1,8 @@
 package fr.bretzel.aot
 
 import fr.bretzel.aot.config.Config
+import fr.bretzel.aot.event.Event
+import org.bukkit.event.Listener
 import org.bukkit.plugin.java.JavaPlugin
 import java.io.File
 
@@ -9,6 +11,7 @@ class AOT: JavaPlugin() {
     companion object {
 
         @JvmField var INSTANCE: AOT? = null
+
         @JvmField var CONFIG: Config? = null
 
     }
@@ -34,6 +37,9 @@ class AOT: JavaPlugin() {
 
         CONFIG = Config(f)
 
+        Logger.debug = (CONFIG as Config).getValue("Debug", false) as Boolean
+
+        server.pluginManager.registerEvents(Event::class.java as Listener, INSTANCE)
     }
 
     override fun onDisable() {

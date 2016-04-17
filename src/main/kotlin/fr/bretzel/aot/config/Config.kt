@@ -9,9 +9,9 @@ class Config {
     private var config: FileConfiguration? = null
     private var file: File? = null;
 
-    constructor(file: File?) {
+    constructor(file: File) {
 
-        if (!file!!.exists()) {
+        if (!file.exists()) {
             throw IllegalArgumentException("The file is not created !")
         }
 

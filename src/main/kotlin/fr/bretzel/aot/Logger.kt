@@ -7,7 +7,7 @@ class Logger {
 
     companion object {
 
-        val debug: Boolean = false
+        var debug: Boolean = false
 
         fun debug(obj: Any) {
             if (debug)
