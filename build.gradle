@@ -10,6 +10,12 @@ buildscript {
     }
 }
 
+configurations {
+
+    required
+    compile.extendsFrom(required)
+}
+
 apply plugin: 'java'
 apply plugin: 'kotlin'
 
@@ -24,5 +30,22 @@ dependencies {
     compile files("./libs/craftbukkit-1.9.2.jar")
 
     compile "org.jetbrains.kotlin:kotlin-stdlib:1.0.1"
+
+    compile "org.jetbrains.kotlin:kotlin-compiler:1.0.1"
+
+    //
+    required group: 'org.jetbrains.kotlin', name: 'kotlin-stdlib', version: '1.0.1'
+
     testCompile group: 'junit', name: 'junit', version: '4.11'
+}
+
+jar {
+
+    dependsOn configurations.compile
+
+    from {
+        configurations.required.collect {
+            it.isDirectory() ? it : zipTree(it)
+        }
+    }
 }

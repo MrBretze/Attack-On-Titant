@@ -7,6 +7,7 @@ class Logger {
 
     companion object {
 
+        @JvmField
         var debug: Boolean = false
 
         fun debug(obj: Any) {

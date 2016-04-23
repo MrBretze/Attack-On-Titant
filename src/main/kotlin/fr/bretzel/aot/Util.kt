@@ -16,22 +16,21 @@ class Util {
             val progress: Vector = direction.clone().multiply(0.5)
             val maxDistance: Int = 100 * range / 70
 
-            val loop: Int = maxDistance;
+            var loop: Int = 0;
 
-            while (loop > 0) {
-                loop.minus(1)
+            while (loop < maxDistance) {
+
+                loop = loop.plus(1)
 
                 f.add(progress)
+
+                print("loop: " + loop)
 
                 if (f.block.type.isSolid) {
                     return f
                 }
             }
-
-            return null!!
+            return f;
         }
-
-
-
     }
 }

@@ -2,7 +2,6 @@ package fr.bretzel.aot
 
 import fr.bretzel.aot.config.Config
 import fr.bretzel.aot.event.Event
-import org.bukkit.event.Listener
 import org.bukkit.plugin.java.JavaPlugin
 import java.io.File
 
@@ -17,7 +16,7 @@ class AOT: JavaPlugin() {
     }
 
     override fun onLoad() {
-        Logger.debug("Attack of the titans plugin starting of loading !")
+        print("Attack of the titans plugin starting of loading !")
         INSTANCE = this
 
     }
@@ -39,7 +38,7 @@ class AOT: JavaPlugin() {
 
         Logger.debug = (CONFIG as Config).getValue("Debug", false) as Boolean
 
-        server.pluginManager.registerEvents(Event::class.java as Listener, INSTANCE)
+        server.pluginManager.registerEvents(Event(), INSTANCE)
     }
 
     override fun onDisable() {
