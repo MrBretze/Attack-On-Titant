@@ -17,7 +17,7 @@ class Event: Listener {
 
         if (event.item != null && event.item.type == Material.LEASH) {
             val loc: Location = Util.getDestination(player, 100)
-            player.teleport(loc)
+            Util.movePlayerToPoint(player, loc, player.eyeLocation.direction)
         }
     }
 
